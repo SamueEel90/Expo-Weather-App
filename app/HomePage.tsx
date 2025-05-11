@@ -1,10 +1,9 @@
-import { Text, View } from "react-native"
-
+import { View } from "react-native"
 const HomePage: React.FC = () => {
   return (
     <>
-    <View className="h-full bg-slate-700">
-      <Text>Hello</Text>
+    <View className="object-center h-full bg-gray-200">
+     
     </View>
     </>
   )
