@@ -1,9 +1,12 @@
 import HomePage from "./HomePage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Index() {
+  const queryClient = new QueryClient();
+
   return (
-  <>
-  <HomePage/>
-  </>
+    <QueryClientProvider client={queryClient}>
+      <HomePage />
+    </QueryClientProvider>
   );
 }
