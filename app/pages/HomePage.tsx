@@ -1,11 +1,11 @@
 import { View, Text, TextInput, TouchableOpacity, Image, ScrollView,TouchableWithoutFeedback, Keyboard } from "react-native";
 import React, { useState } from "react";
-import { useWeatherQuery } from "./features/useWeatherQuery";
+import { useWeatherQuery } from "../features/useWeatherQuery";
 import dayjs from "dayjs";
-import { getWeatherIcon } from "./helperFunctions/getIcon";
+import { getWeatherIcon } from "../helperFunctions/getIcon";
 import { navigate } from "expo-router/build/global-state/routing";
 import { useRouter } from "expo-router";
-import MiniForecast from "./components/MiniForecast";
+import MiniForecast from "../components/MiniForecast";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -27,10 +27,10 @@ const HomePage: React.FC = () => {
           {data?.location.name}, {data?.location.country}
         </Text>
         <View className="absolute top-12 right-8">
-        <TouchableOpacity onPress={()=> {router.push('/LocationsPage')}}
+        <TouchableOpacity onPress={()=> {router.push('./LocationsPage')}}
         >
           <Image
-            source={require('../assets/icons/icons8-menu-60.png')}
+            source={require('../../assets/icons/icons8-menu-60.png')}
             style={{ width: 32, height: 32 }}
           />
         </TouchableOpacity>

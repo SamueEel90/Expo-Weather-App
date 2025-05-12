@@ -1,4 +1,4 @@
-import HomePage from "./HomePage";
+import HomePage from "../app/pages/HomePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Index() {
