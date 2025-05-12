@@ -12,6 +12,7 @@ export interface WeatherData {
       text: string;
       icon: string;
     };
+    pressure_mb: number;
   };
   forecast: {
     forecastday: Array<{
@@ -26,6 +27,21 @@ export interface WeatherData {
           icon: string;
         };
       };
+      hour: Array<{
+        time: string;
+        temp_c: number;
+        humidity: number;
+        wind_kph: number;
+        precip_mm: number;
+        pressure_mb: number;
+        is_day: number;
+        condition: {
+          text: string;
+          icon: string;
+        };
+        will_it_rain: number;
+        chance_of_rain: number;
+      }>;
     }>;
   };
 }

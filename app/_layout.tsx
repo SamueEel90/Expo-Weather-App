@@ -16,6 +16,12 @@ export default function RootLayout() {
         }}
         name="HomePage"
       />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Locations"
+      />
     </Stack>
   );
 }
