@@ -16,7 +16,7 @@ const MiniForecast: React.FC<MiniForecastProps> = ({ weather }) => {
 
 const getHourOnly = (timeString?: string): string => {
   if (!timeString) return "N/A";
-  return dayjs(timeString).format("h:mm A"); 
+  return dayjs(timeString).format("hh A"); 
 };
 
   return (
