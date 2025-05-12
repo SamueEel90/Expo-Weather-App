@@ -33,8 +33,9 @@ const HomePage: React.FC = () => {
 
   return (
     <ScrollView className="flex-1">
-      <View className="h-full overflow-scroll bg-slate-100 p-4 pt-14">
-        <Text className="text-primary text-2xl font-semibold">
+      <View className="h-full overflow-scroll bg-background p-4 pt-14">
+        <Text className="text-secondary
+         text-2xl font-semibold">
           {data?.location.name}, {data?.location.country}
         </Text>
         <View className="absolute top-12 right-8">
@@ -48,7 +49,7 @@ const HomePage: React.FC = () => {
         <Text className="text-muted text-xl">{formattedDate}</Text>
         <View className="items-center justify-center">
           <Image
-            className="mt-16"
+            className="mt-8"
             source={
               data?.current?.condition?.text
                 ? getWeatherIcon(data.current.condition.text)
@@ -67,7 +68,7 @@ const HomePage: React.FC = () => {
           </Text>
         </View>
 
-        <View className="bg-slate-50 rounded-2xl">
+        <View className="bg-surface rounded-2xl">
           <View className="mt-6 flex-row justify-between items-center w-full px-12">
             <Text className="text-muted text-xl">Wind</Text>
             <Text className="text-muted text-xl">Humidity</Text>

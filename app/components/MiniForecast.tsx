@@ -21,11 +21,11 @@ const getHourOnly = (timeString?: string): string => {
 
   return (
   <>
-  <Text className=" text-2xl pt-4">Today</Text>
-    <View className="flex flex-row h-40 justify-between mt-12  space-x-10 ">
+  <Text className=" text-2xl pt-4 border-b border-gray-300">Today</Text>
+    <View className="flex flex-row h-40 justify-between mt-12 px-6  space-x-10 ">
       
       
-      <View>
+      <View >
         <Text>{getHourOnly(weather?.forecast?.forecastday?.[0]?.hour?.[hourPlus4]?.time)}</Text>
         <Image 
         source={weather?.current?.condition?.text ? getWeatherIcon(weather?.forecast?.forecastday?.[0]?.hour?.[hourPlus4]?.condition.text) : undefined} 

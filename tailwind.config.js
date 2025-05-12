@@ -6,7 +6,7 @@ module.exports = {
     extend: {
         colors: {
         primary: '#000000',       // Pure black
-        secondary: '#1C1C1C',     // Dark gray
+        secondary: '#373535',     // Dark gray
         background: '#FFFFFF',   // Pure white
         surface: '#F5F5F5',       // Light gray background
         text: '#111111',          // Near black for text
