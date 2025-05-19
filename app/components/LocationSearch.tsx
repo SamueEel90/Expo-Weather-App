@@ -5,7 +5,7 @@ import { useWeatherQuery } from "../features/useWeatherQuery";
 
 const LocationSearch: React.FC = () => {
   const [input, setInput] = useState("");
-  const [selectedCity, setSelectedCity] = useState("Trencin");
+  const [selectedCity, setSelectedCity] = useState('Trencin');
   const [suggestions, setSuggestions] = useState<any[]>([]);
 
   const { data, isLoading, error } = useWeatherQuery(selectedCity);
@@ -42,7 +42,7 @@ const handleSelect = async (cityName: string) => {
   }, [input]);
 
   return (
-    <View className="mt-11 px-4">
+    <View className="mt-20 px-4">
       <TextInput
         className="border p-2 mb-2"
         placeholder="Search city"
@@ -73,9 +73,7 @@ const handleSelect = async (cityName: string) => {
       {error && <Text className="text-red-500 mt-4">Error loading weather</Text>}
       {data && (
         <View className="mt-4">
-          <Text className="text-xl font-bold">{data.location.name}</Text>
-          <Text>{data.current.temp_c}°C</Text>
-          <Text>{data.current.condition.text}</Text>
+        
         </View>
       )}
     </View>

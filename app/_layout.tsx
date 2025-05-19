@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,6 +25,7 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
+     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
     <Stack>
       <Stack.Screen
@@ -45,5 +48,6 @@ export default function RootLayout() {
       />
     </Stack>
     </QueryClientProvider>
+    </Provider>
   );
 }

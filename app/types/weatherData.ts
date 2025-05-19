@@ -1,4 +1,4 @@
-export interface WeatherData {
+interface WeatherData {
   location: {
     name: string;
     country: string;
@@ -45,3 +45,4 @@ export interface WeatherData {
     }>;
   };
 }
+export default WeatherData;

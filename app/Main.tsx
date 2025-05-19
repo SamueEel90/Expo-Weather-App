@@ -1,31 +1,18 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import React from "react";
 import { useWeatherQuery } from "./features/useWeatherQuery";
 import dayjs from "dayjs";
 import { getWeatherIcon } from "./helperFunctions/getIcon";
 import { useRouter } from "expo-router";
 import MiniForecast from "./components/MiniForecast";
 import NextForecast from "./components/NextForecast";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const Main: React.FC = () => {
   const router = useRouter();
-  const [city, setCity] = useState<string>("Trencin");
-  const [queryCity, setQueryCity] = useState<string>("Trencin");
-  const { data, isLoading, error } = useWeatherQuery(queryCity);
- 
-
-  const handleSearch = () => {
-    setQueryCity(city);
-  };
+  const city = useSelector((state: RootState) => state.city.city);
+  const { data, isLoading, error } = useWeatherQuery(city);
 
   const formattedDate = dayjs(data?.forecast.forecastday[0].date).format(
     "ddd, DD MMMM"
@@ -34,8 +21,7 @@ const Main: React.FC = () => {
   return (
     <ScrollView className="flex-1">
       <View className="h-full overflow-scroll bg-background p-4 pt-14">
-        <Text className="text-secondary
-         text-2xl font-semibold">
+        <Text className="text-secondary text-2xl font-semibold">
           {data?.location.name}, {data?.location.country}
         </Text>
         <View className="absolute top-12 right-8">
@@ -67,7 +53,6 @@ const Main: React.FC = () => {
             {data?.current.condition.text}
           </Text>
         </View>
-
         <View className="bg-surface rounded-2xl">
           <View className="mt-6 flex-row justify-between items-center w-full px-12">
             <Text className="text-muted text-xl">Wind</Text>
@@ -78,30 +63,17 @@ const Main: React.FC = () => {
             <Text className="text-primary text-xl">
               {data?.current.wind_kph} km/h
             </Text>
-            <Text className="text-primary text-xl">{data?.current.humidity}%</Text>
+            <Text className="text-primary text-xl">
+              {data?.current.humidity}%
+            </Text>
             <Text className="text-primary text-xl">
               {data?.current.pressure_mb} hPa
             </Text>
           </View>
-
           <MiniForecast weather={data} />
           <NextForecast weather={data} />
-
-          <TextInput
-            className="border mt-11 p-2 mb-4"
-            placeholder="Enter city name"
-            value={city}
-            onChangeText={setCity}
-          />
-          <TouchableOpacity
-            onPress={handleSearch}
-            className="bg-blue-500 p-2 rounded"
-          >
-            <Text className="text-white text-center">Search</Text>
-          </TouchableOpacity>
           {isLoading && <Text>Loading...</Text>}
           {error && <Text>Error fetching weather data</Text>}
-          
         </View>
       </View>
     </ScrollView>
