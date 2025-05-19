@@ -8,4 +8,10 @@ export const fetchWeatherData = async (location: string) => {
 
 
   return weatherData;
-}
+};
+  export const fetchCitySuggestions = async (query: string) => {
+  const response = await axios.get(
+    `http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`
+  );
+  return response.data; 
+};

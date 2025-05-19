@@ -4,7 +4,7 @@ import "../global.css";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -12,6 +12,7 @@ export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     "Montserra": require("../assets/fonts/Montserra.ttf"),
   });
+   const queryClient = new QueryClient();
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -22,6 +23,7 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
+      <QueryClientProvider client={queryClient}>
     <Stack>
       <Stack.Screen
         name="index"
@@ -30,17 +32,18 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen
-        name="HomePage"
+        name="Main"
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="Locations"
+        name="LocationsPage"
         options={{
           headerShown: false,
         }}
       />
     </Stack>
+    </QueryClientProvider>
   );
 }

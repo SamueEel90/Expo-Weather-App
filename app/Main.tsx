@@ -9,19 +9,19 @@ import {
   Keyboard,
 } from "react-native";
 import React, { useState } from "react";
-import { useWeatherQuery } from "../features/useWeatherQuery";
+import { useWeatherQuery } from "./features/useWeatherQuery";
 import dayjs from "dayjs";
-import { getWeatherIcon } from "../helperFunctions/getIcon";
+import { getWeatherIcon } from "./helperFunctions/getIcon";
 import { useRouter } from "expo-router";
-import MiniForecast from "../components/MiniForecast";
-import NextForecast from "../components/NextForecast";
+import MiniForecast from "./components/MiniForecast";
+import NextForecast from "./components/NextForecast";
 
-const HomePage: React.FC = () => {
+const Main: React.FC = () => {
   const router = useRouter();
   const [city, setCity] = useState<string>("Trencin");
   const [queryCity, setQueryCity] = useState<string>("Trencin");
   const { data, isLoading, error } = useWeatherQuery(queryCity);
-  const [dropdown, setDropDown] = useState(false);
+ 
 
   const handleSearch = () => {
     setQueryCity(city);
@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
         <View className="absolute top-12 right-8">
           <TouchableOpacity onPress={() => router.push("./LocationsPage")}>
             <Image
-              source={require("../../assets/icons/icons8-menu-60.png")}
+              source={require("../assets/icons/icons8-menu-60.png")}
               style={{ width: 32, height: 32 }}
             />
           </TouchableOpacity>
@@ -108,4 +108,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Main;

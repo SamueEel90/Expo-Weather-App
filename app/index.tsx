@@ -1,12 +1,14 @@
-import HomePage from "../app/pages/HomePage";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import LocationsPage from "./LocationsPage";
+import Main from "./Main";
+
 
 export default function Index() {
-  const queryClient = new QueryClient();
+  
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <HomePage />
-    </QueryClientProvider>
+   <>
+      <Main />
+     
+   </>
   );
 }
