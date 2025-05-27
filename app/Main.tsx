@@ -28,20 +28,20 @@ const Main: React.FC = () => {
           <TouchableOpacity onPress={() => router.push("./LocationsPage")}>
             <Image
               source={require("../assets/icons/icons8-menu-60.png")}
-              style={{ width: 32, height: 32 }}
+              style={{ width: 32, height: 32, shadowColor: 'gray', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.75, shadowRadius: 2.84 }}
             />
           </TouchableOpacity>
         </View>
         <Text className="text-muted text-xl">{formattedDate}</Text>
         <View className="items-center justify-center">
           <Image
-            className="mt-8"
+            className="mt-10"
             source={
               data?.current?.condition?.text
                 ? getWeatherIcon(data.current.condition.text)
                 : null
             }
-            style={{ width: 200, height: 200 }}
+            style={{ width: 200, height: 200, shadowColor: 'gray', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.75, shadowRadius: 1.84, borderRadius: 20 }}
             resizeMode="contain"
           />
         </View>

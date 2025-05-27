@@ -25,7 +25,7 @@ const MiniForecast: React.FC<MiniForecastProps> = ({ weather }) => {
                     ? getWeatherIcon(hourData.condition.text)
                     : undefined
                 }
-                style={{ width: 40, height: 40 }}
+                style={{ width: 40, height: 40,  shadowColor: 'gray', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.75, shadowRadius: 2.84}}
               />
               <Text className="text-xl">{hourData.temp_c}°C</Text>
             </View>

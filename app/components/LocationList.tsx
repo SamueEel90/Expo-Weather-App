@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import WeatherCard from "./WeatherCard";
 
 const LocationList: React.FC = () => {
@@ -20,9 +20,13 @@ const LocationList: React.FC = () => {
 
   return (
     <ScrollView>
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', padding: 16 }}>
       {locations.map((city) => (
-        <WeatherCard key={city} city={city} />
+        <View key={city} style={{ width: '50%', padding: 4, shadowColor: 'gray', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.75, shadowRadius: 5.84, elevation: 5 }}>
+          <WeatherCard city={city} />
+        </View>
       ))}
+    </View>
     </ScrollView>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TextInput, View, Text, FlatList, TouchableOpacity, ActivityIndicator, ScrollView } from "react-native";
+import { TextInput, View, Text, FlatList, TouchableOpacity, ActivityIndicator, ScrollView, StyleSheet } from "react-native";
 import { fetchCitySuggestions } from "../api/weatherApi";
 import { useWeatherQuery } from "../features/useWeatherQuery";
 
@@ -9,6 +9,16 @@ const LocationSearch: React.FC = () => {
   const [suggestions, setSuggestions] = useState<any[]>([]);
 
   const { data, isLoading, error } = useWeatherQuery(selectedCity);
+  const styles = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderColor: '#4B5563', 
+    borderRadius: 12,
+    padding: 8,
+    marginBottom: 8,
+    opacity: 0.75,
+  },
+});
 
 const handleSelect = async (cityName: string) => {
   setInput(cityName);
@@ -42,13 +52,14 @@ const handleSelect = async (cityName: string) => {
   }, [input]);
 
   return (
-    <View className="mt-20 px-4">
-      <TextInput
-        className="border p-2 mb-2"
-        placeholder="Search city"
-        value={input}
-        onChangeText={setInput}
-      />
+    <View className=" mt-20 px-4">
+   
+<TextInput
+  style={styles.input}
+  placeholder="Add new location"
+  value={input}
+  onChangeText={setInput}
+/>
 
       {suggestions.length > 0 && (
       

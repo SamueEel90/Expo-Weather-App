@@ -1,4 +1,4 @@
-import {View, Text} from "react-native"
+import {View, Text, ScrollView} from "react-native"
 import LocationSearch from "./components/LocationSearch";
 import WeatherData from "./types/weatherData";
 import LocationList from "./components/LocationList";
@@ -10,10 +10,10 @@ interface WeatherDataProps {
 const LocationsPage: React.FC<WeatherDataProps> = ({ weather}) => {
   
   return (
-    <View>
+    <ScrollView>
   <LocationSearch />
   <LocationList />
-    </View>
+    </ScrollView>
   )
 }
 
